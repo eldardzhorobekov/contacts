@@ -16,7 +16,7 @@
 				</div>
 				<div class="info-text">Information</div>
 				<div class="other-info">
-					<li v-for="val,key in filteredUser"
+					<li v-for="(val,key) in filteredUser" :key="key"
 							class="info-item">
 						<font-awesome-icon :icon="val[1]" class="info-icon"/>
 						{{val[0]}}
@@ -29,19 +29,11 @@
 
 <script>
 	import Modal from './Modal.vue'
-	import Edit from './Edit.vue'
-	import Delete from './Delete.vue'
 	export default {
 		components: {
 			Modal,
-			Edit,
-			Delete
 		},
 		props: ["user"],
-		data() {
-			return {
- 	 		}
-		},
 		methods: {
 			showEdit: function() {
 				this.$parent.showEditModal(this.user);
