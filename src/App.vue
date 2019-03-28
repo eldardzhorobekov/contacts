@@ -13,6 +13,11 @@
   import axios from 'axios'; // ajax
   import UsersList from './components/Users.vue';
   import TheHeader from './components/Header.vue';
+
+  export const HTTP = axios.create({
+    baseURL: 'http://demo.sibers.com/',
+  })
+
   export default {
     components: {
       UsersList, // same as UsersList : UsersList
@@ -20,7 +25,7 @@
     },
     data() {
       return {
-        users: null
+        users: null,
       }
     },
     mounted() {
@@ -29,8 +34,8 @@
       if(localStorage.getItem('users') != null) {
         this.users = JSON.parse(localStorage.getItem('users'));
       } else {
-        axios
-          .get('http://demo.sibers.com/users')
+        HTTP
+          .get('users')
           .then(response => (this.users = response));
       }
         
