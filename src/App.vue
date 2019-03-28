@@ -29,8 +29,9 @@
       if(localStorage.getItem('users') != null) {
         this.users = JSON.parse(localStorage.getItem('users'));
       } else {
+        var config = { crossdomain: true };
         axios
-          .get('https://github.com/mio-eldar/contacts/tree/master/src/assets/users.json')
+          .get('https://mio-eldar.github.io/contacts/src/assets/users.json', config)
           .then(response => (this.users = response));
       }
         
