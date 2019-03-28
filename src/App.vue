@@ -13,11 +13,6 @@
   import axios from 'axios'; // ajax
   import UsersList from './components/Users.vue';
   import TheHeader from './components/Header.vue';
-
-  export const HTTP = axios.create({
-    baseURL: 'http://demo.sibers.com/',
-  })
-
   export default {
     components: {
       UsersList, // same as UsersList : UsersList
@@ -34,8 +29,8 @@
       if(localStorage.getItem('users') != null) {
         this.users = JSON.parse(localStorage.getItem('users'));
       } else {
-        HTTP
-          .get('users')
+        axios
+          .get('https://github.com/mio-eldar/contacts/tree/master/src/assets/users.json')
           .then(response => (this.users = response));
       }
         
